@@ -8,12 +8,12 @@ console.log(process.env.MONGO_URI) // TODO
 
 
 
-  var personSchema = new mongoose.Schema({
+  let personSchema = new mongoose.Schema({
     name: String,
     age: Number,
     favoriteFoods: [String]
   });
-var Person =  mongoose.model('Person', personSchema);
+let Person =  mongoose.model('Person', personSchema);
 
 // const done = (val , data) => {
 //   console.log("done")
@@ -31,8 +31,16 @@ var createAndSavePerson = function(done) {
 
 
 // createAndSavePerson(done)
+// arrayOfPeople = [{name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish", "fresh fruit"]},
+// {name: "Jane ", age: 14, favoriteFoods: [ "fish", "fresh fruit"]},
+// {name: " Fonda", age: 18, favoriteFoods: [ "fresh fruit"]}]
 const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+  
+  Person.create(arrayOfPeople, function(err, data){
+                  if (err) return console.error(err);
+                  done(null , data);
+              })
+  
 };
 
 const findPeopleByName = (personName, done) => {
