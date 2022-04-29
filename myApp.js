@@ -18,7 +18,9 @@ let personSchema = new Schema({
     
   age:{type:Number},
   
-  favoriteFoods : [String]
+  favoriteFoods : {
+                  type: [String], default: []
+                  }
   
 });
 
@@ -34,7 +36,8 @@ const createAndSavePerson = (done) => {
      age:27,
      favoriteFoods : ["rice"]
   })
-  person.save((err , data)=>{})
+  person.save(function(err, data) {})
+  
   done(null /*, data*/);
 };
 
