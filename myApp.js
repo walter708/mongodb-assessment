@@ -15,8 +15,9 @@ console.log(process.env.MONGO_URI) // TODO
   });
 var Person =  mongoose.model('Person', personSchema);
 
-var Person = mongoose.model('Person', personSchema);
-
+// const done = (val , data) => {
+//   console.log("done")
+// };
 var createAndSavePerson = function(done) {
   var janeFonda = new Person({name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish", "fresh fruit"]});
 
@@ -25,7 +26,8 @@ var createAndSavePerson = function(done) {
     done(null, data)
   });
 };
-  
+
+// createAndSavePerson(done)
 
 
 // createAndSavePerson(done)
