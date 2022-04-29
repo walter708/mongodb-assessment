@@ -44,7 +44,11 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  Person.find({personName : "Jane" }, function(err, data){
+  val = personName
+  if (typeof(val) != "string"){
+    val = String(val)
+  }
+  Person.find({val:"June"} , function(err, data){
     if (err) return console.error(err);
     done(null , data);
 })
