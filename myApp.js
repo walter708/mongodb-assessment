@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 console.log(process.env.MONGO_URI) // TODO
 const { Schema } = mongoose;
 try {
-  mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect(process.env.MONGO_URI);
 } catch (e) {
   console.log(e);
 }
