@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { save } = require('mongodb/lib/operations/collection_ops');
 const mongoose = require('mongoose')
 console.log(process.env.MONGO_URI) // TODO
 const { Schema } = mongoose;
@@ -23,7 +24,19 @@ let personSchema = new Schema({
 
 let Person =  mongoose.model('Person', personSchema);
 
+
+
 const createAndSavePerson = (done) => {
+  let person = new Person({
+     name:"Walter",
+     age:27,
+     favoriteFoods : ["rice"]
+  })
+  person.save((err , data)=>{
+    if(data){console.log("saved",data)}
+    else{console.log(err)}
+    
+  })
   done(null /*, data*/);
 };
 
