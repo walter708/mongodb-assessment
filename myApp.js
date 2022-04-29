@@ -25,21 +25,20 @@ let personSchema = new Schema({
 let Person =  mongoose.model('Person', personSchema);
 
 
-
+// const done = (val) => {
+//   console.log(val)
+// }
 const createAndSavePerson = (done) => {
   let person = new Person({
      name:"Walter",
      age:27,
      favoriteFoods : ["rice"]
   })
-  person.save((err , data)=>{
-    if(data){console.log("saved",data)}
-    else{console.log(err)}
-    
-  })
+  person.save((err , data)=>{})
   done(null /*, data*/);
 };
 
+// createAndSavePerson(done)
 const createManyPeople = (arrayOfPeople, done) => {
   done(null /*, data*/);
 };
