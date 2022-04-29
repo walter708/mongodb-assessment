@@ -2,41 +2,32 @@ require('dotenv').config();
 const { save } = require('mongodb/lib/operations/collection_ops');
 const mongoose = require('mongoose')
 console.log(process.env.MONGO_URI) // TODO
-const { Schema } = mongoose;
 try {
-  mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true});
 } catch (e) {
   console.log(e);
 }
 
 
-let personSchema = new Schema({
-  name:{
-    type:String, 
-    required: true
-  },
-    
-  age:{type:Number},
-  
-  favoriteFoods : {
-                  type: [String], default: []
-                  }
-  
+let personSchema = new mongoose.Schema({
+  name:String,
+  age: Number,
+  favoriteFoods : [String]
 });
 
-let Person =  mongoose.model('Person', personSchema);
+var Person =  mongoose.model('Person', personSchema);
 
 
 // const done = (val) => {
 //   console.log(val)
 // }
 const createAndSavePerson = (done) => {
-  let person = new Person({
+  var walter = new Person({
      name:"Walter",
      age:27,
-     favoriteFoods : ["rice"]
+     favoriteFoods : ["eggs", "fish", "fresh fruit"]
   })
-  person.save(function(err, data) {
+  walter.save(function(err, data) {
     if (err) return console.error(err);
     done(null ,data);
   })
