@@ -390,6 +390,7 @@ router.post("/query-tools", function (req, res, next) {
             console.log("Missing `done()` argument");
             return next({ message: "Missing callback argument" });
           }
+          console.log(data,"Hello")
           res.json(data);
         });
       } catch (e) {
