@@ -39,7 +39,7 @@ const TIMEOUT = 10000;
 
 app.use(bodyParser.urlencoded({ extended: "false" }));
 app.use(bodyParser.json());
-app.use("/" , enableCORS)
+
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
@@ -398,7 +398,7 @@ router.post("/query-tools", function (req, res, next) {
   });
 });
 
-app.use("/_api", router);
+app.use("/_api", enableCORS, router);
 
 // Error handler
 app.use(function (err, req, res, next) {
