@@ -20,6 +20,7 @@ const enableCORS = function (req, res, next) {
   if (!process.env.DISABLE_XORIGIN) {
     const allowedOrigins = ["https://www.freecodecamp.org"];
     const origin = req.headers.origin;
+    console.log(origin);
     if (!process.env.XORIGIN_RESTRICT || allowedOrigins.indexOf(origin) > -1) {
       console.log(req.method);
       res.set({
