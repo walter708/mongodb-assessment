@@ -28,6 +28,13 @@ const enableCORS = function (req, res, next) {
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept",
       });
+    }else{
+      res.set({
+        "Access-Control-Allow-Origin": origin,
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
+      });
     }
   }
   next();
@@ -326,6 +333,7 @@ router.post("/remove-many-people", function (req, res, next) {
       if (err) {
         return next(err);
       }
+      
       try {
         removeMany(function (err, data) {
           clearTimeout(t);
