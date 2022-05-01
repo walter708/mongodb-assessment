@@ -102,7 +102,7 @@ const removeManyPeople = (done) => {
   const nameToRemove = "Mary";
   Person.remove({name: nameToRemove}, function(err , jsonObj){
     if (err) return console.error(err);
-    done(null ,jsonObj);
+    done(null , jsonObj);
   });
   // done(null /*, data*/);
 };
