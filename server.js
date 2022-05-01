@@ -28,13 +28,6 @@ const enableCORS = function (req, res, next) {
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept",
       });
-    }else{
-      res.set({
-        "Access-Control-Allow-Origin": origin,
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers":
-          "Origin, X-Requested-With, Content-Type, Accept",
-      });
     }
   }
   next();
@@ -46,7 +39,7 @@ const TIMEOUT = 10000;
 
 app.use(bodyParser.urlencoded({ extended: "false" }));
 app.use(bodyParser.json());
-
+app.use("/" , enableCORS)
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
@@ -405,7 +398,7 @@ router.post("/query-tools", function (req, res, next) {
   });
 });
 
-app.use("/_api", enableCORS, router);
+app.use("/_api", router);
 
 // Error handler
 app.use(function (err, req, res, next) {
